@@ -80,4 +80,61 @@ FROM Customers;
 The **SELECT** statement is an essential SQL command for retrieving data from a database. By combining it with other SQL commands, you can perform powerful data manipulations and analyses.
 
 For more advanced queries, consider exploring filtering (`WHERE`), sorting (`ORDER BY`), grouping (`GROUP BY`), and joining multiple tables (`JOIN`).
+### **SQL SELECT DISTINCT Statement**
 
+The `SELECT DISTINCT` statement in SQL is used to retrieve only unique (distinct) values from a column or combination of columns in a table. This is useful when a column contains duplicate values, and you need to eliminate redundancy in the results.
+
+---
+
+### **Key Features:**
+1. **Purpose**: Returns only distinct values from the specified columns.
+2. **Eliminates Duplicates**: Filters out repeated values in the result set.
+3. **Applies to Columns**: Can be applied to one or multiple columns to fetch unique combinations of data.
+
+---
+
+### **Syntax:**
+```sql
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+```
+
+---
+
+### **Example:**
+
+**Table**: *Customers*
+
+| CustomerID | CustomerName                   | Country  |
+|------------|--------------------------------|----------|
+| 1          | Alfreds Futterkiste           | Germany  |
+| 2          | Ana Trujillo Emparedados y Helados | Mexico |
+| 3          | Antonio Moreno Taquería       | Mexico   |
+| 4          | Around the Horn               | UK       |
+| 5          | Berglunds snabbköp            | Sweden   |
+
+- **Query Without DISTINCT**:
+  ```sql
+  SELECT Country FROM Customers;
+  ```
+  **Output**:  
+  Germany, Mexico, Mexico, UK, Sweden  
+
+- **Query With DISTINCT**:
+  ```sql
+  SELECT DISTINCT Country FROM Customers;
+  ```
+  **Output**:  
+  Germany, Mexico, UK, Sweden  
+
+---
+
+### **Important Notes:**
+- When using multiple columns with `DISTINCT`, it considers the combination of values in those columns:
+  ```sql
+  SELECT DISTINCT column1, column2 FROM table_name;
+  ```
+- Performance may be impacted for large datasets due to the need for comparison of all records.
+- Always use `DISTINCT` judiciously to avoid unnecessary computational overhead. 
+
+This feature is particularly useful in scenarios like filtering unique categories, countries, or any other non-repetitive data within a database.
