@@ -1,0 +1,72 @@
+When explaining the `AND`, `OR`, and `NOT` operators in an interview, it’s important to highlight their roles in combining conditions and filtering data in SQL queries. Here’s how you can structure your answer:
+
+### 1. **AND Operator:**
+   - **Definition and Purpose:**
+     The `AND` operator is used to combine multiple conditions in a `WHERE` clause. All conditions connected by `AND` must be true for a row to be included in the result set.
+
+   - **Explanation:**
+     "The `AND` operator allows you to combine two or more conditions, and all conditions must be true for a record to be selected. If any condition is false, the entire row is excluded from the result."
+
+   - **Example:**
+     "For example, if we want to find employees who are in the 'Sales' department and have an age greater than 30, the query would be:
+     ```sql
+     SELECT name, department, age
+     FROM employees
+     WHERE department = 'Sales' AND age > 30;
+     ```
+     In this case, both conditions—`department = 'Sales'` and `age > 30`—must be true for the record to be included in the result."
+
+### 2. **OR Operator:**
+   - **Definition and Purpose:**
+     The `OR` operator is used to combine conditions in a `WHERE` clause where at least one of the conditions must be true for a row to be selected.
+
+   - **Explanation:**
+     "The `OR` operator allows you to combine multiple conditions, and at least one condition must be true for the record to be included. If all conditions are false, the row is excluded."
+
+   - **Example:**
+     "For example, if we want to find employees who are either in the 'Sales' department or have an age greater than 30, the query would be:
+     ```sql
+     SELECT name, department, age
+     FROM employees
+     WHERE department = 'Sales' OR age > 30;
+     ```
+     In this case, the row will be included if either of the conditions—`department = 'Sales'` or `age > 30`—is true."
+
+### 3. **NOT Operator:**
+   - **Definition and Purpose:**
+     The `NOT` operator is used to negate a condition. It filters out the rows where the specified condition is true.
+
+   - **Explanation:**
+     "The `NOT` operator negates a condition. It returns the rows where the condition is not true. Essentially, it reverses the truth value of the condition it’s applied to."
+
+   - **Example:**
+     "For example, if we want to find employees who are not in the 'Sales' department, the query would be:
+     ```sql
+     SELECT name, department
+     FROM employees
+     WHERE NOT department = 'Sales';
+     ```
+     This query will return all employees except those in the 'Sales' department."
+
+### 4. **Combining AND, OR, and NOT:**
+   - You can combine these operators in a query to create more complex conditions.
+   
+   - **Explanation:**
+     "You can use `AND`, `OR`, and `NOT` together to create complex filtering conditions. When combining multiple operators, it's important to use parentheses to ensure the correct order of evaluation, as `AND` has higher precedence over `OR`."
+
+   - **Example:**
+     "For example, to find employees who are either in the 'Sales' department or have an age greater than 30, but are not located in 'New York', the query would look like:
+     ```sql
+     SELECT name, department, age, location
+     FROM employees
+     WHERE (department = 'Sales' OR age > 30) AND NOT location = 'New York';
+     ```
+     This ensures the conditions inside the parentheses are evaluated first."
+
+### 5. **Performance Considerations:**
+   You may also briefly mention that using `AND` and `OR` in complex queries can affect performance. It's best to be mindful of how conditions are structured.
+
+   - **Example:**
+     "While combining conditions with `AND` and `OR` is powerful, it's important to consider the performance of your queries, especially when working with large datasets. Using `AND` with indexed columns will often result in faster queries."
+
+This approach will show that you understand the operators' roles, how they can be combined, and their practical applications in filtering data.
